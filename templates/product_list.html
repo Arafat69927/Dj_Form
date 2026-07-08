@@ -13,6 +13,7 @@
       <th scope="col">Department</th>
       <th scope="col">price</th>
       <th scope="col">Description</th>
+      <th scope="col">Date</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -36,9 +37,10 @@
      <td>{{i.Department}}</td>
      <td>{{i.price}}</td>
      <td>{{i.Description}}</td>
+     <td>{{i.Date}}</td>
     <td>
       <a href="{% url 'edit_product' i.id %}" class="btn btn-info btn-sm">Edit</a>
-       <a href="{% url 'delete_product' i.id %}" class="btn btn-danger btn-sm">Remove</a>
+      <a href="{% url 'delete_product' i.id %}" class="btn btn-danger btn-sm">Remove</a>
     </td>
     </tr>
     {% endfor %}

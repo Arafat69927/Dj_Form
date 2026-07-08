@@ -12,5 +12,6 @@ class productModel(models.Model):
     Department = models.CharField(choices=DEPT_TYPE, null=True)
     price = models.PositiveIntegerField(null=True)
     Description = models.TextField(max_length=200, null=True)
+    Date = models.DateField(null=True)
     def __str__(self):
         return f'{self.product_name}'
