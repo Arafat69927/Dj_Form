@@ -4,7 +4,10 @@ from myApp.models import *
 class ProductForm(forms.ModelForm):
     class Meta:
         model = productModel
-        fields = '__all__'
+        fields =['product_name','product_image',
+                 'Department','price',
+                 'Description','Date',
+                 'quantity','category']
 
         widgets = {
             'Date': forms.DateInput(attrs = {
@@ -13,12 +16,8 @@ class ProductForm(forms.ModelForm):
             })
         }
 
-        widgets = {
-            'Description' : forms.TextInput(attrs = {
-            'rows': 3,
-            'placeholder': 'Enter product Description'
-            })
-        }
+     
+
 
 
 

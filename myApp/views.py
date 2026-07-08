@@ -12,15 +12,17 @@ def product_list(req):
         'product_dic':product_data
     }
     return render(req,'product_list.html',context)
-
+ 
 def add_product(req):
     if req.method == 'POST':
         forms_data = ProductForm(req.POST, req.FILES)
         if forms_data.is_valid():
-            forms_data.save()
+            product = forms_data.save(commit=False)
+            product.total = product.price * product.quantity
+            product.save()
         return redirect('product_list')
     else:
-       forms_data = ProductForm
+       forms_data = ProductForm()
 
     context={
        'forms_dic':forms_data
@@ -33,7 +35,9 @@ def edit_product(req,myid):
     if req.method == 'POST':
         forms_data = ProductForm(req.POST, req.FILES, instance=edit_data)
         if forms_data.is_valid():
-            forms_data.save()
+            product = forms_data.save(commit=False)
+            product.total = product.price * product.quantity
+            product.save()
         return redirect('product_list')
     else:
        forms_data = ProductForm(instance=edit_data)
